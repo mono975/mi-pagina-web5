@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bienvenido a Mi Tienda Online. Descubre productos exclusivos, ofertas especiales y realiza tus compras de manera sencilla.">
+    <meta name="keywords" content="Tienda online, compras, ofertas, productos, carrito de compras">
+    <meta name="author" content="Mi Tienda Online">
+    <title>Mi Tienda Online</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo de Mi Tienda Online">
+        </div>
+        <h1>Bienvenido a Mi Tienda Online</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li><a href="#carrito">Carrito <span id="carrito-count">0</span> artículos</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Banner principal -->
+    <section id="inicio" class="banner">
+        <h2>¡Descubre nuestras ofertas increíbles!</h2>
+        <p>Productos exclusivos y precios irresistibles. ¡Compra ahora!</p>
+        <button onclick="scrollToSection('productos')">Ver productos</button>
+    </section>
+
+    <!-- Sección de productos destacados -->
+    <section id="productos">
+        <h2>Productos Destacados</h2>
+        <div class="producto">
+            <h3>Producto 1</h3>
+            <img src="producto1.jpg" alt="Producto 1">
+            <p>Descripción breve del producto.</p>
+            <p>Precio: $100</p>
+            <button onclick="addToCart('Producto 1', 100)">Añadir al carrito</button>
+        </div>
+        <div class="producto">
+            <h3>Producto 2</h3>
+            <img src="producto2.jpg" alt="Producto 2">
+            <p>Descripción breve del producto.</p>
+            <p>Precio: $150</p>
+            <button onclick="addToCart('Producto 2', 150)">Añadir al carrito</button>
+        </div>
+        <div class="producto">
+            <h3>Producto 3</h3>
+            <img src="producto3.jpg" alt="Producto 3">
+            <p>Descripción breve del producto.</p>
+            <p>Precio: $200</p>
+            <button onclick="addToCart('Producto 3', 200)">Añadir al carrito</button>
+        </div>
+        <!-- Filtro de búsqueda -->
+        <div class="filtro">
+            <label for="filtro-precio">Filtrar por precio:</label>
+            <input type="range" id="filtro-precio" name="filtro-precio" min="50" max="500" step="10">
+            <span id="precio-seleccionado">$500</span>
+        </div>
+        <!-- Botón para ordenar por precio -->
+        <button onclick="ordenarProductosPorPrecio()">Ordenar por precio</button>
+    </section>
+
+    <!-- Sección de ofertas especiales -->
+    <section id="ofertas">
+        <h2>Ofertas Especiales</h2>
+        <div class="oferta">
+            <h3>Oferta 1</h3>
+            <p>Compra 2 y obtén 1 gratis.</p>
+        </div>
+        <div class="oferta">
+            <h3>Oferta 2</h3>
+            <p>15% de descuento en pedidos mayores a $300.</p>
+        </div>
+        <button onclick="applyOffer()">Aplicar ofertas</button>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog">
+        <h2>Blog</h2>
+        <article>
+            <h3>Consejos para aprovechar tus compras online</h3>
+            <p>Descubre las mejores prácticas para comprar de manera segura y efectiva en línea.</p>
+            <a href="#">Leer más</a>
+        </article>
+        <article>
+            <h3>Productos ecológicos para un mejor mañana</h3>
+            <p>Conoce nuestra nueva línea de productos amigables con el medio ambiente.</p>
+            <a href="#">Leer más</a>
+        </article>
+    </section>
+
+    <!-- Carrito de compras -->
+    <section id="carrito">
+        <h2>Mi Carrito</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Total</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody id="carrito-items">
+                <tr>
+                    <td colspan="5">Tu carrito está vacío.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p id="total-carrito">Total: $0</p>
+        <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+    </section>
+
+    <!-- Formulario de contacto -->
+    <section id="contacto">
+        <h2>Contáctanos</h2>
+        <form id="formulario-contacto" action="#" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre-contacto" name="nombre" required>
+
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo-contacto" name="correo" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+            <button type="submit">Enviar mensaje</button>
+        </form>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <h2>Preguntas Frecuentes</h2>
+        <div class="pregunta">
+            <h3>¿Cómo realizar un pedido?</h3>
+            <p>Simplemente selecciona los productos que deseas y agrégalos al carrito.</p>
+        </div>
+        <div class="pregunta">
+            <h3>¿Cuáles son los métodos de pago disponibles?</h3>
+            <p>Aceptamos tarjetas de crédito, débito y PayPal.</p>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 Mi Tienda Online. Todos los derechos reservados.</p>
+        <p>Síguenos en:
+            <a href="#">Facebook</a> |
+            <a href="#">Twitter</a> |
+            <a href="#">Instagram</a>
+        </p>
+    </footer>
+
+    <!-- Vincula el archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
